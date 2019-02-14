@@ -10,7 +10,7 @@ public class PokedexPanel extends JPanel
 	private PokedexController app;
 	private SpringLayout appLayout;
 	
-	private JButton changebutton;
+	private JButton changeButton;
 	private JComboBox pokedexDropdown;
 	
 	private JTextField numberField;
@@ -54,7 +54,7 @@ public class PokedexPanel extends JPanel
 		nameLabel = new JLabel("This Pokemon's name is");
 		imageLabel = new JLabel("Pokemon goes here!", pokemonIcon, JLabel.CENTER);
 		enhancementLabel = new JLabel("This pokemon's enhancement level is");
-		//changeButton = new JButton("Click here to change the pokevalues");
+		changeButton = new JButton("Click here to change the pokevalues");
 		pokedexDropdown = new JComboBox(); // stub
 		
 		setupDropdown();
@@ -76,7 +76,13 @@ public class PokedexPanel extends JPanel
 	
 	private void setupListeners()
 	{
-		
+		changeButton.addActionListener(new ActionListener()
+			{
+				public void actionPerformed(ActionEvent click)
+				{
+					sendDataToController();
+				}
+			});
 	}
 	
 	
@@ -98,6 +104,39 @@ public class PokedexPanel extends JPanel
 		this.add(imageLabel);
 		this.add(enhancementLabel);
 		this.add(healthLabel);
+		
+		imageLabel.setVerticalTextPosition(JLabel.BOTTOM);
+		imageLabel.setHorizontalTextPosition(JLabel.CENTER);
+	}
+		
+		private void sendDataToController()
+		{
+			int index = pokedexDropdown.getSelectedIndex();
+				
+				if(app.isInt(attackField.getText()) && app.isDouble(enhancementField.getText()) && app.isInt(healthField.getText()))
+			{
+					String [] data = new String[5];
+					
+					//insert code here
+					app.updatePokemon(index, data);
+			}
+		}
+		
+	private void changeImageDisplay(String name)
+	{
+		String path = "/pokemon/view/images/";
+		String defaultName = "vaporeon";
+		String extension = ".png";
+		try
+		{
+			pokemonIcon = new ImageIcon(getClass().getResource(path + name.toLowerCase() + extension));
+		}
+		catch (NullPointerException missingFile)
+		{
+			pokemonIcon = new ImageIcon(getClass().getResource(path + defaultName + extension));
+		}
+		imageLabel.setIcon(pokemonIcon);
+		repaint();
 	}
 	
 }

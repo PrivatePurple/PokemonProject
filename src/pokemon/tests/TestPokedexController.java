@@ -69,19 +69,5 @@ class TestPokedexController
 		assertNotNull(tested.getFrame(), "Your app needs a GUI frame");
 		assertTrue(tested.getFrame() instanceof PokedexFrame, "Your app needs a PokedexFrame");
 	}
-	
-	public void updaePokemon(int index, String [] data)
-	{
-		if (data.length == 5)
-		{
-			Pokemon current = pokemonList.get(index);
-			current.setAttackPoints(Integer.parseInt(data[0]));
-			current.setEnhancementModifier(Double.parseDouble(data[1]));
-			current.setHealthPoints(Integer.parseInt(data[2]));
-			current.setName(data[3]);
-			current.setCanEvolve(Boolean.parseBoolean(data[4]));
-			
-		}
-	}
 
 }
