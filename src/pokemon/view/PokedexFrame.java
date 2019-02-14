@@ -1,18 +1,29 @@
 package pokemon.view;
 
 import pokemon.controller.PokedexController;
+import javax.swing.JFrame;
 
-import java.awt.Color;
-import java.awt.Dimension;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
-import javax.swing.*;
-
-import chat.controller.IOController;
-import chat.controller.chatbotController;
-import pokemon.controller.PokedexController;
-
-public class PokedexFrame
+public class PokedexFrame extends JFrame
 {
+	private PokedexController appController;
+	private PokedexPanel appPanel;
 	
+	public PokedexFrame(PokedexController appController)
+	{
+		super();
+		
+		this.appController = appController;
+		this.appPanel = new PokedexPanel(appController);
+				
+		setupFrame();
+	}
+	
+	private void setupFrame()
+	{
+		this.setContentPane(appPanel);
+		this.setSize(600,500);
+		this.setTitle("Pokemon!");
+		this.setResizable(false);
+		this.setVisible(true);
+	}
 }

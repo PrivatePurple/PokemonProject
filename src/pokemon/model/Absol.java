@@ -2,6 +2,11 @@ package pokemon.model;
 
 public class Absol extends Pokemon implements Dark
 {
+	public Absol()
+	{
+		super(359, "Absol");
+	}
+	
 	public Absol(int number, String name)
 	{
 		super(number, name);

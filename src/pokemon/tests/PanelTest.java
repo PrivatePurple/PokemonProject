@@ -23,7 +23,7 @@ class PanelTest
 	@BeforeEach
 	void setUp() throws Exception
 	{
-		testedPanel = new PokedexPanel(new PokedexController());
+		
 	}
 
 	@AfterEach
