@@ -10,7 +10,9 @@ public class PokedexPanel extends JPanel
 	private PokedexController app;
 	private SpringLayout appLayout;
 	
+	private JButton saveButton;
 	private JButton changeButton;
+	
 	private JComboBox pokedexDropdown;
 	
 	private JTextField numberField;
@@ -112,6 +114,14 @@ public class PokedexPanel extends JPanel
 					sendDataToController();
 				}
 			});
+		saveButton.addActionListener(new ActionListener()
+		{
+			public void actionPerformed(ActionEvent selection)
+			{
+				String name = pokedexDropdown.getSelectedItem().toString();
+				changeImageDisplay(name);
+			};
+		});
 	}
 	
 	

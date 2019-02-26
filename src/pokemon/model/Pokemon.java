@@ -1,5 +1,6 @@
 package pokemon.model;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 public abstract class Pokemon

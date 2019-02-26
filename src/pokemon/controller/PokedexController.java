@@ -6,9 +6,11 @@ import pokemon.view.PokedexFrame;
 import pokemon.view.PokedexPanel;
 import pokemon.model.*;
 import javax.swing.*;
+import java.io.*;
 
 public class PokedexController
 {
+	private String saveFile = "backup.pokemon";
 	private PokedexFrame appFrame;
 	private ArrayList<Pokemon> pokemonList; 
 	public PokedexController()
@@ -88,6 +90,22 @@ public class PokedexController
 		}
 		return isValid;
 	}
+	
+	public void savePokedex()
+	{
+		try
+		{
+		FileOutputStream saveStream = new FileOutputStream(saveFile);
+				ObjectOutputStream output = new ObjectOutputStream(saveStream);
+				output.writeObject(pokemonList);
+				output.close();
+				saveStream.close();
+	}
+	catch(IOException error)
+	{
+		JOptionPane.showMessageDialog(appFrame, error.getMessage(), "File Error", JOptionPane.ERROR_MESSAGE);
+	}
+}
 }
 
 
